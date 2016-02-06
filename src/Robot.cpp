@@ -4,6 +4,7 @@
 #include "Commands/AutonomousProgram.h"
 #include "CommandBase.h"
 #include <stdint.h>
+#include "AbsEncoder.h"
 
 class Robot: public IterativeRobot
 {
@@ -57,6 +58,8 @@ private:
 //		}
 
 		//printf("Gyro Angle: %f\n", CommandBase::gyro->GetAngle());
+		AbsEncoder* myAbsEnc = new AbsEncoder();
+		SmartDashboard::PutNumber("AbsEncoder Input", myAbsEnc->getInput());
 		Scheduler::GetInstance()->Run();
 		//CommandBase::ir->printValues();
 		//printf("Ticks: %f\n", CommandBase::elevator->getS2Distance());
